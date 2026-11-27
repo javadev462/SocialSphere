@@ -37,7 +37,7 @@ public class AuthServiceImpl implements AuthService{
         // Create User entity
         User user = modelMapper.map(request, User.class);
 
-        user.setPassword(passwordEncoder.encode(request.password()));git branch
+        user.setPassword(passwordEncoder.encode(request.password()));
         user.setRole(Role.USER);
         user.setEnabled(true);
 
@@ -45,7 +45,7 @@ public class AuthServiceImpl implements AuthService{
         User savedUser = userRepo.save(user);
 
         // Return response
-        return new RegisterResponse(
+        return new Response(
                 savedUser.getId(),
                 savedUser.getUsername(),
                 savedUser.getEmail(),
